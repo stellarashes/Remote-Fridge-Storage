@@ -60,7 +60,7 @@ namespace RemoteFridgeStorage
                     {
                         // Use 
                         // var fridgeItems = currentLocation.fridge.Value.items;
-                        var fridgeItems = ModEntry.Fridge();
+                        var fridgeItems = ModEntry.Items();
                         for (int index2 = fridgeItems.Count - 1; index2 >= 0; --index2)
                         {
                             if (fridgeItems[index2] != null &&
@@ -114,7 +114,7 @@ namespace RemoteFridgeStorage
                     ? Game1.textColor
                     : Color.Red;
                 //Get the items from the fridge
-                var fridgeItems = ModEntry.Fridge();
+                var fridgeItems = ModEntry.Items();
                 if (__instance.isCookingRecipe && Game1.player.hasItemInList(
                         (IList<Item>) fridgeItems,
                         instanceRecipeList.Keys.ElementAt<int>(index), instanceRecipeList.Values.ElementAt<int>(index), 8))
@@ -146,13 +146,4 @@ namespace RemoteFridgeStorage
             return false;
         }
     }
-
-    internal static class Util
-    {
-        public static T GetField<T>(CraftingRecipe instance, string field)
-        {
-            return ModEntry.Instance.Helper.Reflection.GetField<T>(instance, field, false).GetValue();
-        }
-    }
-    
 }

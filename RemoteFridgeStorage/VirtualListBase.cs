@@ -8,17 +8,18 @@ using StardewValley.Objects;
 
 namespace RemoteFridgeStorage
 {
+    /// <inheritdoc />
     /// <summary>
     /// The list for using the remoteFridgeStorage.
     /// </summary>
-    public class FridgeVirtualList : VirtualListBase<Item, Chest>
+    public class HandlerVirtualList : VirtualListBase<Item, Chest>
     {
-        public FridgeVirtualList(FridgeHandler fridgeHandler) : base(ToList(fridgeHandler),
+        public HandlerVirtualList(InventoryHandler inventoryHandler) : base(ToList(inventoryHandler),
             chest => chest.items)
         {
         }
 
-        private static List<Chest> ToList(FridgeHandler fridgeHandler)
+        private static List<Chest> ToList(InventoryHandler fridgeHandler)
         {
             var chests = fridgeHandler.Chests.ToList();
             if (Game1.getLocationFromName("farmHouse") is FarmHouse farm) chests.Add(farm.fridge.Value);
